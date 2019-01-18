@@ -18,6 +18,7 @@ import com.chinawanbang.casecollection.common.constant.MsgEnum;
 import com.chinawanbang.casecollection.common.util.HttpsClientUtil;
 import com.chinawanbang.casecollection.common.util.RedisUtil;
 import com.chinawanbang.casecollection.common.vo.ResultVO;
+import com.chinawanbang.casecollection.system.entity.Person;
 import com.chinawanbang.casecollection.system.service.UserService;
 
 @Service
@@ -26,10 +27,8 @@ public class UserServiceImpl implements UserService {
 
 	@Value("${qrCodeUrl}")
 	private String qrCodeUrl;
-	
 	@Value("${loginUrl}")
 	private String loginUrl;
-	
 	@Autowired
 	private RedisUtil redisUtil;
 	
@@ -66,14 +65,26 @@ public class UserServiceImpl implements UserService {
 		ResultVO r = new ResultVO();
 		try {
 			String ticket = (String) session.getAttribute("qrcode_ticket");
-			Object ticketVal = redisUtil.getRedisTemplate().opsForValue().get(ticket);
-			r.setSuccess(true);
-			r.setAttrValue(KeyEnum.PERSON, ticketVal);
+			if (null != ticket) {
+				ticket = ticket + "_OK";
+			} else {
+				r.setSuccess(false);
+				r.setMessage(MsgEnum.GET_QR_CODE);
+				return r;
+			}
+			log.info("登录ticket：" + ticket);
+			String personStr = (String) redisUtil.getRedisTemplate().opsForValue().get(ticket);
+			if (personStr == null) {
+				r.setSuccess(false);
+				r.setMessage(MsgEnum.LOG_ING);
+			} else {
+				r.setSuccess(true);
+				r.setAttrValue(KeyEnum.PERSON, JSONObject.parseObject(personStr, Person.class));
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("获取ticket失败：", e);
+			log.info("登陆错误：", e);
 			r.setSuccess(false);
-			r.setMessage(MsgEnum.LOG_ING);
+			r.setMessage(MsgEnum.LOG_FALL);
 		}
 		return r;
 	}

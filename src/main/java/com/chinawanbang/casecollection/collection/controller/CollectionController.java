@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.aliyun.oss.OSSClient;
 import com.chinawanbang.casecollection.collection.constant.CollectionConstant;
 import com.chinawanbang.casecollection.collection.service.CollectionService;
+import com.chinawanbang.casecollection.common.util.LoginValidUtil;
 import com.chinawanbang.casecollection.common.util.RedisUtil;
+import com.chinawanbang.casecollection.common.vo.ResultVO;
+import com.chinawanbang.casecollection.system.entity.Person;
 
 @Controller
 @RequestMapping("/collection")
@@ -33,10 +36,23 @@ public class CollectionController {
 	@Autowired
 	private RedisUtil redisUtil;
 	
+	/**
+	 * 文件上传
+	 * @param file
+	 * @param session
+	 * @return
+	 */
     @RequestMapping(value = "/uploadppt")
     @ResponseBody
     public Map<String, Object> uploadppt(MultipartFile file, HttpSession session) {
     	Map<String, Object> json = new HashMap<String, Object>();
+    	LoginValidUtil loginValidUtil = new LoginValidUtil(redisUtil);
+    	Map<String, Object> loginValid = loginValidUtil.loginValid(session);
+		if (!(boolean) loginValid.get("success")) {
+			json.put("success", false);
+            json.put("msg", "请先扫描二维码登陆");
+			return json;
+		}
         // 首先判断文件是否为空
         if (!file.isEmpty()) {
         	OSSClient ossClient = null;
@@ -50,19 +66,19 @@ public class CollectionController {
                     json.put("msg", "请您选择ppt类型文件上传！");
                     return json;
                 }
-                String ticket = (String) session.getAttribute("qrcode_ticket");
-                //Object ticketVal = redisUtil.getRedisTemplate().opsForValue().get(ticket);
+                Person person = (Person) loginValid.get("person");
                 //上传文件名称
-                String upFileName = fileName;
+                String upFileName = person.getHospital()+person.getTrueName()+".ppt";
                 //上传文件到oss
                 // 创建OSSClient实例
                 ossClient = new OSSClient(CollectionConstant.ENDPOINT, CollectionConstant.ACCESSKEYID, CollectionConstant.ACCESSKEYSECRET);
                 // 上传
-                String absoluteApk = CollectionConstant.OBJECTKEY + upFileName;
-                ossClient.putObject(CollectionConstant.BUCKETNAME, absoluteApk, new ByteArrayInputStream(file.getBytes()));
-                String url = CollectionConstant.BUCKET_URL + absoluteApk;
+                String absolutePpt = CollectionConstant.OBJECTKEY + upFileName;
+                ossClient.putObject(CollectionConstant.BUCKETNAME, absolutePpt, new ByteArrayInputStream(file.getBytes()));
+                String url = CollectionConstant.BUCKET_URL + absolutePpt;
                 // 存入数据库
-                
+                person.setPptUrl(upFileName);
+                collectionService.addPerson(person);
                 json.put("success", true);
                 json.put("url", url);
             } catch (Exception e) {
@@ -80,5 +96,27 @@ public class CollectionController {
             return json;
         }
         return json;
+    }
+    
+    /**
+     * 文件删除
+     * @param session
+     * @return
+     */
+    @RequestMapping("/delppt")
+    @ResponseBody
+    public ResultVO delppt(HttpSession session) {
+        return collectionService.delppt(session);
+    }
+    
+    /**
+     * 获取人员信息
+     * @param session
+     * @return
+     */
+    @RequestMapping("/personDetail")
+    @ResponseBody
+    public ResultVO personDetail(HttpSession session) {
+        return collectionService.personDetail(session);
     }
 }
