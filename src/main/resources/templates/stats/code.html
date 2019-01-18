@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/globalCSS/global.css">
+    <script type="text/javascript" src="http://download.fengyouhui.net/globalJS/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="http://download.fengyouhui.net/globalJS/global_750.js"></script>
+    <link rel="stylesheet" href="http://download.fengyouhui.net/fyh_wechat/Zhuyb/common_css/zyb1.css">
+    <script type="text/javascript" src="http://download.fengyouhui.net/fyh_wechat/common_js/jquery.cookie.js"></script>
+    <title>我的二维码</title>
+    <style>
+        html,body{
+            background:#F5F5F5;
+        }
+        .common_deploy_tip{
+    position:fixed;
+    left:0;
+    width:100%;
+    top:50%;
+    text-align:center;
+    /*min-height:4rem;*/
+    line-height:1.8rem;
+    color:#fff;
+    font-size:1.4rem;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 999;
+}
+.common_deploy_tip p{
+    display:inline-block;
+    background:rgba(0,0,0,0.8);
+    border-radius:2rem;
+    padding:1.2rem 2.5rem;
+}
+    </style>
+</head>
+<body id="fans">
+<div class="codeWrap">
+    <div class="con">
+        <form method="post" action="/casecollection/collection/uploadppt" enctype="multipart/form-data"
+		    class="form-horizontal m-t" id="signupForm" name="signupForm">
+			<div class="form-group">
+				<label>应用PPT：</label>
+				<div>
+				    <input id="file" name="file" type="file">
+				</div>
+			</div>
+			<div>
+				<div>
+					<button type="submit">提交</button>
+				</div>
+			</div>
+		</form>
+    </div>
+</div>
+<div class="shareWrap">
+    <p class="shareTit"><span>分享到</span></p>
+    <ul class="shareList">
+        <li class="item">
+            <img src="http://download.fengyouhui.net/fyh_wechat/Zhuyb/common_imgs/wechat.png" alt="" class="pic">
+            <p class="tit">微信</p>
+        </li>
+        <li class="item">
+            <img src="http://download.fengyouhui.net/fyh_wechat/Zhuyb/common_imgs/friend.png" alt="" class="pic">
+            <p class="tit">朋友圈</p>
+        </li>
+        <li class="item">
+            <img src="http://download.fengyouhui.net/fyh_wechat/Zhuyb/common_imgs/zone.png" alt="" class="pic">
+            <p class="tit">QQ好友</p>
+        </li>
+    </ul>
+</div>
+<div class="sharePop">
+    <div class="con">
+        <img src="http://download.fengyouhui.net/fyh_wechat/Zhuyb/common_imgs/shareGuidPic.png" alt="" class="pic">
+        <p>分享点击右上角</p>
+    </div>
+</div>
+<script type="text/javascript" src="http://download.fengyouhui.net/fyh_wechat/common_js/globalTools.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
