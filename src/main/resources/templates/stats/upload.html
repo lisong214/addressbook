@@ -1,22 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>上传文件</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="apple-mobile-web-app-title" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="format-detection" content="telephone=no, email=no"/>
-    <meta name="msapplication-tap-highlight" content="no">
-    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=1">
 </head>
 
 <body>
 
+<div class="header-wrap">
+    <div class="header">
+        <div class="left h1">
+            病例收集系统
+        </div>
+        <div class="right">
+            XXX您好
+            <span class="btn-logout">退出系统</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="main">
+
+    <div class="upload">
+        <h3>CVC病例上传<span>截止时间：2019-04-30</span></h3>
+        <p>操作说明：</p>
+        <div class="list line">
+            <ul>
+                <li>
+                    <span class="btn-w100">点击这里下载PPT模板</span>
+                </li>
+                <li>
+                    按照PPT模板填写患者病例
+                </li>
+                <li>
+                    将PPT以“医院名+姓名”的格式命名
+                </li>
+                <li>
+                    上传病例
+                </li>
+            </ul>
+        </div>
+        <div class="progress clearfix">
+            <div class="left"></div>
+            <div class="mid">
+                <p>上海第六人民医院 内分泌科 李晨光</p>
+                <p>
+                    <span style="width: 50%"></span>
+                </p>
+            </div>
+            <div class="right">
+                正在上传16%
+            </div>
+        </div>
+        <div class="btn-w80">上传病例</div>
+        <div class="confirm clearfix">
+            <span class="btn-w40 white">删除</span>
+            <span class="btn-w40">下载</span>
+        </div>
+    </div>
+</div>
+
+<script src="http://download.fengyouhui.net/casecollection/js/jquery-2.1.0.js"></script>
 <script type="text/javascript" charset="utf-8">
 
+    //获取个人信息
+    function personDetail(){
+        $.ajax( {
+            url:"/casecollection/collection/personDetail",
+            type:'post',
+            dataType:'json',
+            success:function(res) {
+                if(res.success===true){
+                }else{
+                    alert(res.data.errmsg)
+                    window.location.href = "index"
+                }
+            },
+            error:function() {
+                alert('network error')
+            }
+        });
+    }
+
+    //文件上传
+    function uploadppt(fileData){
+        $.ajax( {
+            url:"/casecollection/collection/uploadppt",
+            type:'post',
+            dataType:'json',
+            data:fileData,
+            success:function(res) {
+                if(res.success===true){
+                }else{
+                    alert(res.data.errmsg)
+                }
+            },
+            error:function() {
+                alert('network error')
+            }
+        });
+    }
+
+    //文件删除
+    function delppt(){
+        $.ajax( {
+            url:"/casecollection/collection/delppt",
+            type:'post',
+            dataType:'json',
+            success:function(res) {
+                if(res.success===true){
+                }else{
+                    alert(res.data.errmsg)
+                }
+            },
+            error:function() {
+                alert('network error')
+            }
+        });
+    }
+
+    $(function () {
+        personDetail()
+    })
+
 </script>
+
 </body>
 </html>

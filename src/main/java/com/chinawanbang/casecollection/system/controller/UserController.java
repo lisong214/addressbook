@@ -39,7 +39,7 @@ public class UserController {
      */
     @GetMapping("/index")
     public ModelAndView login() {
-    	ModelAndView mv = new ModelAndView("stats/index");
+    	ModelAndView mv = new ModelAndView("stats/login");
         return mv;
     }
     /**

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+    <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/login.css?v=1">
+</head>
+
+<body class="login">
+
+<div class="main">
+    <h1 class="logo"></h1>
+    <div class="qrcode-wrap" id="qrcode">
+        <img  src="" alt="" class="img">
+        <p class="tit">微信授权扫码登录</p>
+    </div>
+</div>
+
+<script src="http://download.fengyouhui.net/casecollection/js/jquery-2.1.0.js"></script>
+<script>
+
+    var intervalTime = 3000;
+    var hasQrCode = false;
+    //获取登录二维码
+    function getQrcode(){
+        $.ajax( {
+            url:"/casecollection/user/qrCode",
+            type:'post',
+            dataType:'json',
+            data:{
+                loginType:"CVC"
+            },
+            success:function(res) {
+                if(res.success===true){
+                    var imgUrl = res.data.qrcode;
+                    hasQrCode = true
+                    $("#qrcode").find("img").attr("src",imgUrl);
+                }else{
+                    alert(res.data.errmsg)
+                }
+            },
+            error:function() {
+                alert(res.data.errmsg)
+            }
+        });
+    }
+
+    //检测登录
+    function checkLogin(){
+        $.ajax( {
+            url:"/casecollection/user/login",
+            type:'post',
+            dataType:'json',
+            success:function(res) {
+                if(res.success===true){
+                    window.location.href= window.location.host+'/casecollection/user/upload';
+                }else{
+                    console.log(res.data.errmsg)
+                }
+            },
+            error:function() {
+                alert(result.msg)
+            }
+        });
+    }
+
+   $(function(){
+        getQrcode();
+        setInterval(function () {
+            if(hasQrCode){
+                checkLogin();
+            }
+        },intervalTime);
+    })
+</script>
+</body>
+</html>
+    
