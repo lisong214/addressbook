@@ -224,7 +224,7 @@
             if (!file) {
                 return;
             }
-            if(!new RegExp("powerpoint").test(file.type)){
+            if(!/(powerpoint|vnd.openxmlformats-officedocument)/ig.test(file.type)){
                 alert("请上传PPT格式的文件");
                 return;
             }
@@ -237,7 +237,6 @@
             uploadppt(formData);
 
             //解决上传相同文件不触发onchange事件
-            $("btnUploadPPT").val("");
             var clone = this.cloneNode(true);
             clone.onchange = arguments.callee; //克隆不会复制动态绑定事件
             clone.value = '';
