@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>上传文件</title>
     <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=1">
     <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=1">
 </head>
 
@@ -17,7 +17,7 @@
             病例收集系统
         </div>
         <div class="right">
-            XXX您好
+            您好
             <span class="btn-logout">退出系统</span>
         </div>
     </div>
@@ -32,7 +32,9 @@
         <div class="list line">
             <ul>
                 <li>
-                    <span class="btn-w100">点击这里下载PPT模板</span>
+                    <span class="btn-w100" id="btnDownloadTemp">
+                        <a href="http://download.fengyouhui.net/casecollection/ppt/test.ppt">点击这里下载PPT模板</a>
+                    </span>
                 </li>
                 <li>
                     按照PPT模板填写患者病例
@@ -49,23 +51,39 @@
             <div class="left"></div>
             <div class="mid">
                 <p>上海第六人民医院 内分泌科 李晨光</p>
-                <p>
-                    <span style="width: 50%"></span>
+                <p class="progress-bar">
+                    <span style="width: 0%"></span>
                 </p>
             </div>
             <div class="right">
                 正在上传16%
             </div>
         </div>
-        <div class="btn-w80">上传病例</div>
-        <div class="confirm clearfix">
-            <span class="btn-w40 white">删除</span>
+        <div class="btn-w80 btn-upload">
+            上传病例
+            <form action="/casecollection/collection/uploadppt" method="post" enctype="multipart/form-data" id="uploadForm" class="upload-form">
+                <input class="btn-upload-ppt" name="file" type="file" id="btnUploadPPT" />
+            </form>
+        </div>
+        <div class="confirm hidden clearfix">
+            <span class="btn-w40 white" onclick="$('#detPptPop').fadeIn(100);">删除</span>
             <span class="btn-w40">下载</span>
         </div>
     </div>
 </div>
 
+<div class="fixed-page mask pop hidden" id="detPptPop">
+    <div class="align-c box">
+        确定删除病例重新上传
+        <p class="clearfix btn-wrap">
+            <span class="btn-w40 white pull-l" onclick="$(this).closest('.pop').fadeOut(100)">取消</span>
+            <span class="btn-w40 pull-r" id="btnDeletePPT">确认</span>
+        </p>
+    </div>
+</div>
+
 <script src="http://download.fengyouhui.net/casecollection/js/jquery-2.1.0.js"></script>
+<script src="http://download.fengyouhui.net/casecollection/jquery.form.min.js"></script>
 <script type="text/javascript" charset="utf-8">
 
     //获取个人信息
@@ -76,9 +94,28 @@
             dataType:'json',
             success:function(res) {
                 if(res.success===true){
+
                 }else{
                     alert(res.data.errmsg)
-                    window.location.href = "index"
+                }
+            },
+            error:function() {
+                alert('network error')
+            }
+        });
+    }
+
+    //模板下载
+    function downloadppt(){
+        $.ajax( {
+            url:"/casecollection/base/downloadppt",
+            type:'post',
+            dataType:'json',
+            success:function(res) {
+                if(res.success===true){
+
+                }else{
+                    alert(res.data.errmsg)
                 }
             },
             error:function() {
@@ -89,16 +126,45 @@
 
     //文件上传
     function uploadppt(fileData){
+
+        var time=new Date().getTime();
+        var percentage =null;
+
         $.ajax( {
             url:"/casecollection/collection/uploadppt",
             type:'post',
             dataType:'json',
             data:fileData,
+            contentType: false,
+            processData: false,
             success:function(res) {
                 if(res.success===true){
+                    alert('ppt上传成功');
                 }else{
-                    alert(res.data.errmsg)
+                    alert(res.msg)
                 }
+            },
+            xhr: function xhr() {
+                //获取原生的xhr对象
+                var xhr = $.ajaxSettings.xhr();
+                if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', function (e) {
+                        var nowDate = new Date().getTime();
+                        if (nowDate - time >= 1000) {
+                            percentage = parseInt(e.loaded / e.total * 100);
+                            console.log(percentage);
+                            $(".progress-bar").find("span").css("width",percentage+"%");
+                            if (percentage >= 99) {
+                                $(".hintText").html('服务端正在解析，请稍后');
+                            } else {
+                                time = nowDate;
+                            }
+                        } else {
+                            return;
+                        }
+                    }, false);
+                }
+                return xhr;
             },
             error:function() {
                 alert('network error')
@@ -114,6 +180,7 @@
             dataType:'json',
             success:function(res) {
                 if(res.success===true){
+                    window.location.reload(true)
                 }else{
                     alert(res.data.errmsg)
                 }
@@ -126,8 +193,47 @@
 
     $(function () {
         personDetail()
-    })
 
+        //下载ppt
+        $("#btnDownloadTemp").on("click",function () {
+            downloadppt();
+        })
+
+        //删除ppt
+        $("#btnDeletePPT").on("click",function () {
+            delppt();
+        })
+
+
+        //上传文件
+        $("#btnUploadPPT").on('change', function () {
+            var file = $(this)[0].files[0];
+            var size = file.size;
+            if (!file) {
+                return;
+            }
+            if(!new RegExp("powerpoint").test(file.type)){
+                alert("请上传PPT格式的文件");
+                return;
+            }
+            if (size > 50 * 1024 * 1000) {
+                alert("该文件过大，请简化<br/>至50M以下再重新上传");
+                return;
+            }
+            var formData = new FormData();
+            formData.append("file", file);
+            uploadppt(formData);
+
+            //解决上传相同文件不触发onchange事件
+            $("btnUploadPPT").val("");
+            var clone = this.cloneNode(true);
+            clone.onchange = arguments.callee; //克隆不会复制动态绑定事件
+            clone.value = '';
+            this.parentNode.replaceChild(clone, this);
+        });
+
+
+    })
 </script>
 
 </body>
