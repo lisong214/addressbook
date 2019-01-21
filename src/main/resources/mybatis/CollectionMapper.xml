@@ -7,7 +7,8 @@
             (#{person.id},#{person.openId},#{person.trueName},#{person.hospital},#{person.portrait},#{person.pptUrl})
     </insert>
     <select id="personDetail" resultType="com.chinawanbang.casecollection.system.entity.Person">
-        select id, openId, trueName, hospital, portrait, pptUrl from wbcms.casecollection_person where id = #{id} and del_flag = 1
+        select id, openId, trueName, hospital, portrait, pptUrl from wbcms.casecollection_person 
+            where id = #{id} and del_flag = 1 ORDER BY insert_time DESC LIMIT 1
     </select>
     <update id="delppt">
         update wbcms.casecollection_person set del_flag = 0, update_time = now() where id = #{id}

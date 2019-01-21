@@ -76,6 +76,8 @@ public class CollectionController {
                 String absolutePpt = CollectionConstant.OBJECTKEY + upFileName;
                 ossClient.putObject(CollectionConstant.BUCKETNAME, absolutePpt, new ByteArrayInputStream(file.getBytes()));
                 String url = CollectionConstant.BUCKET_URL + absolutePpt;
+                // 删除文件
+                // ossClient.deleteObject(CollectionConstant.BUCKETNAME, upFileName);
                 // 存入数据库
                 person.setPptUrl(upFileName);
                 collectionService.addPerson(person);
