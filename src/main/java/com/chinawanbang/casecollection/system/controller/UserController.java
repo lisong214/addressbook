@@ -28,9 +28,18 @@ public class UserController {
      * 获取登录页面
      * @return
      */
-    @GetMapping()
+    @GetMapping("/login")
     public ModelAndView login() {
-    	ModelAndView mv = new ModelAndView("stats/code");
+    	ModelAndView mv = new ModelAndView("stats/index");
+        return mv;
+    }
+    /**
+     * 获取登录页面
+     * @return
+     */
+    @GetMapping("/upload")
+    public ModelAndView upload() {
+    	ModelAndView mv = new ModelAndView("stats/upload");
         return mv;
     }
     /**
