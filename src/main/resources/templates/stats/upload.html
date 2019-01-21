@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>上传文件</title>
     <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=1">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=1">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=2">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=2">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
         <div class="left h1">
             病例收集系统
         </div>
-        <div class="right">
-            您好
-            <span class="btn-logout">退出系统</span>
+        <div class="right ">
+            <span id="userName"></span>
+            <span class="btn-logout" id="btnLogout">退出系统</span>
         </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
             <ul>
                 <li>
                     <span class="btn-w100" id="btnDownloadTemp">
-                        <a href="http://download.fengyouhui.net/casecollection/ppt/test.ppt">点击这里下载PPT模板</a>
+                        <a href="/casecollection/download/病例模板.ppt">点击这里下载PPT模板</a>
                     </span>
                 </li>
                 <li>
@@ -50,13 +50,13 @@
         <div class="progress clearfix">
             <div class="left"></div>
             <div class="mid">
-                <p>上海第六人民医院 内分泌科 李晨光</p>
+                <p class="person-info"></p>
                 <p class="progress-bar">
                     <span style="width: 0%"></span>
                 </p>
             </div>
             <div class="right">
-                正在上传16%
+                正在上传<span class="progress-bar-text">0%</span>
             </div>
         </div>
         <div class="btn-w80 btn-upload">
@@ -67,7 +67,9 @@
         </div>
         <div class="confirm hidden clearfix">
             <span class="btn-w40 white" onclick="$('#detPptPop').fadeIn(100);">删除</span>
-            <span class="btn-w40">下载</span>
+            <span class="btn-w40">
+                <a href="" class="uploaded-ppt-url">下载</a>
+            </span>
         </div>
     </div>
 </div>
@@ -83,7 +85,7 @@
 </div>
 
 <script src="http://download.fengyouhui.net/casecollection/js/jquery-2.1.0.js"></script>
-<script src="http://download.fengyouhui.net/casecollection/jquery.form.min.js"></script>
+<script src="http://download.fengyouhui.net/casecollection/js/jquery.form.min.js"></script>
 <script type="text/javascript" charset="utf-8">
 
     //获取个人信息
@@ -94,6 +96,14 @@
             dataType:'json',
             success:function(res) {
                 if(res.success===true){
+                    if(res.data.person){
+                        var person = res.data.person;
+                        var name = person.trueName;
+                        var pptUrl =  person.pptUrl;
+                        $("#userName").text("您好,"+ name);
+                        $(".uploaded-ppt-url").attr("href",pptUrl);
+                        $(".person-info").html(person.hospital+" "+person.trueName);
+                    }
                 }else{
                     alert(res.data.errmsg)
                     window.location.href ="index"
@@ -102,25 +112,6 @@
             error:function() {
                 alert('network error')
 
-            }
-        });
-    }
-
-    //模板下载
-    function downloadppt(){
-        $.ajax( {
-            url:"/casecollection/base/downloadppt",
-            type:'post',
-            dataType:'json',
-            success:function(res) {
-                if(res.success===true){
-
-                }else{
-                    alert(res.data.errmsg)
-                }
-            },
-            error:function() {
-                alert('network error')
             }
         });
     }
@@ -141,6 +132,7 @@
             success:function(res) {
                 if(res.success===true){
                     alert('ppt上传成功');
+                    window.location.reload(true)
                 }else{
                     alert(res.msg)
                 }
@@ -155,8 +147,9 @@
                             percentage = parseInt(e.loaded / e.total * 100);
                             console.log(percentage);
                             $(".progress-bar").find("span").css("width",percentage+"%");
+                            $(".progress-bar-text").html(percentage+"%");
                             if (percentage >= 99) {
-                                $(".hintText").html('服务端正在解析，请稍后');
+                                console.log.html('服务端正在解析，请稍后');
                             } else {
                                 time = nowDate;
                             }
@@ -193,7 +186,13 @@
     }
 
     $(function () {
+
+        //获取信息
         personDetail()
+
+        $("#btnLogout").on("click",function () {
+            window.location.replace("index");
+        })
 
         //下载ppt
         $("#btnDownloadTemp").on("click",function () {
