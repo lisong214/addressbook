@@ -101,16 +101,20 @@
                         var person = res.data.person;
                         var name = person.trueName;
                         var pptUrl =  person.pptUrl;
+
                         $("#userName").text("您好,"+ name);
-                        $(".uploaded-ppt-url").attr("href",pptUrl);
                         $(".person-info").html(person.hospital+"  "+person.trueName);
                         $(".portrait").attr("src",person.portrait);
 
-                        $(".confirm").show(30);
-                        $(".progress-bar").find("span").css("width","100%");
-                        $(".progress-bar-text").html("上传完成");
-                    }else{
-                        $(".btn-upload").show(30);
+                        if(pptUrl){
+                            $(".progress-bar").find("span").css("width","100%");
+                            $(".progress-bar-text").html("上传完成");
+                            $(".uploaded-ppt-url").attr("href","https://fyhcollection.oss-cn-hangzhou.aliyuncs.com/ppt/"+pptUrl);
+                            $(".confirm").show(30);
+                        }else{
+                            $(".btn-upload").show(30);
+                        }
+
                     }
                 }else{
                     alert(res.data.errmsg)
