@@ -12,7 +12,7 @@ public class Person {
 		return pptUrl;
 	}
 	public void setPptUrl(String pptUrl) {
-		this.pptUrl = "https://fyhcollection.oss-cn-hangzhou.aliyuncs.com/ppt/"+pptUrl;
+		this.pptUrl = pptUrl;
 	}
 	public String getTrueName() {
 		return trueName;
