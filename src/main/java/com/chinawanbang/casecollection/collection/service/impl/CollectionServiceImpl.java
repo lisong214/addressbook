@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.chinawanbang.casecollection.collection.dao.CollectionDao;
 import com.chinawanbang.casecollection.collection.service.CollectionService;
 import com.chinawanbang.casecollection.common.constant.KeyEnum;
@@ -35,8 +34,8 @@ public class CollectionServiceImpl implements CollectionService {
 			Map<String, Object> loginValid = loginValidUtil.loginValid(session);
 			if ((boolean) loginValid.get("success")) {
 				// 根据人员openid删除ppt
-				String personStr = (String) loginValid.get("person");
-				if (collectionDao.delppt(JSONObject.parseObject(personStr, Person.class).getId())>1) {
+				Person personObj = (Person) loginValid.get("person");
+				if (collectionDao.delppt(personObj.getId())>=1) {
 					r.setSuccess(true);
 					r.setMessage(MsgEnum.OPERATION_SUCCESS);
 				} else {
@@ -63,10 +62,10 @@ public class CollectionServiceImpl implements CollectionService {
 			Map<String, Object> loginValid = loginValidUtil.loginValid(session);
 			if ((boolean) loginValid.get("success")) {
 				// 获取redis人员信息
-				String personStr = (String) loginValid.get("person");
-				log.info("人员信息："+personStr);
+				Person personObj = (Person) loginValid.get("person");
+				log.info("人员信息："+personObj.getTrueName());
 				// 根据id获取人员信息
-				Person person = collectionDao.personDetail(JSONObject.parseObject(personStr, Person.class).getId());
+				Person person = collectionDao.personDetail(personObj.getId());
 			    r.setSuccess(true);
 			    r.setAttrValue(KeyEnum.PERSON, person);
 			} else {

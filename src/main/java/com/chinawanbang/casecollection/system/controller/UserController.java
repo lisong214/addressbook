@@ -23,12 +23,21 @@ public class UserController {
 
     @Resource
     private UserService userService;
+    /**
+     * 上传测试页面
+     * @return
+     */
+    @GetMapping("")
+    public ModelAndView test() {
+    	ModelAndView mv = new ModelAndView("stats/code");
+        return mv;
+    }
     
     /**
      * 获取登录页面
      * @return
      */
-    @GetMapping("/login")
+    @GetMapping("/index")
     public ModelAndView login() {
     	ModelAndView mv = new ModelAndView("stats/index");
         return mv;
