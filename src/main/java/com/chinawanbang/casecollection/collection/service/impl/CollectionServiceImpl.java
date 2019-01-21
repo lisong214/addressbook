@@ -66,8 +66,13 @@ public class CollectionServiceImpl implements CollectionService {
 				log.info("人员信息："+personObj.getTrueName());
 				// 根据id获取人员信息
 				Person person = collectionDao.personDetail(personObj.getId());
-			    r.setSuccess(true);
-			    r.setAttrValue(KeyEnum.PERSON, person);
+				if (null != person) {
+					r.setSuccess(true);
+				    r.setAttrValue(KeyEnum.PERSON, person);
+				} else {
+					r.setSuccess(true);
+				    r.setAttrValue(KeyEnum.PERSON, personObj);
+				}
 			} else {
 				r.setSuccess(false);
 				r.setMessage(MsgEnum.LOG_FALL);
