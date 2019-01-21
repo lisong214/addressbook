@@ -94,9 +94,9 @@
             dataType:'json',
             success:function(res) {
                 if(res.success===true){
-
                 }else{
                     alert(res.data.errmsg)
+                    window.location.href ="index"
                 }
             },
             error:function() {
