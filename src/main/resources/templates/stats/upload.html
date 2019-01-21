@@ -47,19 +47,20 @@
                 </li>
             </ul>
         </div>
-        <div class="progress clearfix">
-            <div class="left"></div>
+        <div class="progress  clearfix">
+            <div class="left">
+                <img src="about:blank" class="portrait" alt="头像">
+            </div>
             <div class="mid">
                 <p class="person-info"></p>
                 <p class="progress-bar">
                     <span style="width: 0%"></span>
                 </p>
             </div>
-            <div class="right">
-                正在上传<span class="progress-bar-text">0%</span>
+            <div class="right progress-bar-text">
             </div>
         </div>
-        <div class="btn-w80 btn-upload">
+        <div class="btn-w80 btn-upload hidden">
             上传病例
             <form action="/casecollection/collection/uploadppt" method="post" enctype="multipart/form-data" id="uploadForm" class="upload-form">
                 <input class="btn-upload-ppt" name="file" type="file" id="btnUploadPPT" />
@@ -102,7 +103,14 @@
                         var pptUrl =  person.pptUrl;
                         $("#userName").text("您好,"+ name);
                         $(".uploaded-ppt-url").attr("href",pptUrl);
-                        $(".person-info").html(person.hospital+" "+person.trueName);
+                        $(".person-info").html(person.hospital+"  "+person.trueName);
+                        $(".portrait").attr("src",person.portrait);
+
+                        $(".confirm").show(30);
+                        $(".progress-bar").find("span").css("width","100%");
+                        $(".progress-bar-text").html("上传完成");
+                    }else{
+                        $(".btn-upload").show(30);
                     }
                 }else{
                     alert(res.data.errmsg)
@@ -147,7 +155,7 @@
                             percentage = parseInt(e.loaded / e.total * 100);
                             console.log(percentage);
                             $(".progress-bar").find("span").css("width",percentage+"%");
-                            $(".progress-bar-text").html(percentage+"%");
+                            $(".progress-bar-text").html("正在上传"+percentage+"%");
                             if (percentage >= 99) {
                                 console.log.html('服务端正在解析，请稍后');
                             } else {
