@@ -61,14 +61,14 @@ public class CollectionController {
                 String fileName = file.getOriginalFilename();
                 //获取文件后缀
                 String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
-                if (!"ppt".equalsIgnoreCase(fileType)) {
+                if (!"ppt".equalsIgnoreCase(fileType) && !"pptx".equalsIgnoreCase(fileType)) {
                     json.put("success", false);
-                    json.put("msg", "请您选择ppt类型文件上传！");
+                    json.put("msg", "请您选择ppt或者pptx类型文件上传！");
                     return json;
                 }
                 Person person = (Person) loginValid.get("person");
                 //上传文件名称
-                String upFileName = person.getHospital()+person.getTrueName()+".ppt";
+                String upFileName = person.getHospital()+person.getTrueName()+"."+fileType;
                 //上传文件到oss
                 // 创建OSSClient实例
                 ossClient = new OSSClient(CollectionConstant.ENDPOINT, CollectionConstant.ACCESSKEYID, CollectionConstant.ACCESSKEYSECRET);
