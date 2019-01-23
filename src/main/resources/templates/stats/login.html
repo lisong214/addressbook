@@ -27,7 +27,7 @@
     //获取登录二维码
     function getQrcode(){
         $.ajax( {
-            url:"/casecollection/user/qrCode",
+            url:"/user/qrCode",
             type:'post',
             dataType:'json',
             data:{
@@ -51,7 +51,7 @@
     //检测登录
     function checkLogin(){
         $.ajax( {
-            url:"/casecollection/user/login",
+            url:"/user/login",
             type:'post',
             dataType:'json',
             success:function(res) {
