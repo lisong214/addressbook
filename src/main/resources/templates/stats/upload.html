@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>上传文件</title>
     <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=4">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=4">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=5">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=5">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <ul>
                 <li>
                     <span class="btn-w100" id="btnDownloadTemp">
-                        <a href="/download/ACSppt病例模板.pptx">点击这里下载PPT模板</a>
+                        <a href="/download/ACSppt病例模板.pptx" class="d-full">点击这里下载PPT模板</a>
                     </span>
                 </li>
                 <li>
@@ -49,7 +49,7 @@
         </div>
         <div class="progress hidden clearfix">
             <div class="left">
-                <img src="http://download.fengyouhui.net/casecollection/images/yyb_logo.png?v=4" class="portrait" alt="头像">
+                <img src="http://download.fengyouhui.net/casecollection/images/yyb_logo.png?v=5" class="portrait" alt="头像">
             </div>
             <div class="mid">
                 <p class="person-info"></p>
@@ -70,7 +70,7 @@
         <div class="confirm hidden clearfix">
             <span class="btn-w40 white" onclick="$('#detPptPop').fadeIn(100);">删除</span>
             <span class="btn-w40">
-                <a href="" class="uploaded-ppt-url">下载</a>
+                <a href="" class="uploaded-ppt-url d-full">下载</a>
             </span>
         </div>
     </div>
@@ -144,7 +144,6 @@
             processData: false,
             success:function(res) {
                 if(res.success===true){
-                    alert('ppt上传成功');
                     window.location.reload(true)
                 }else{
                     alert(res.msg)
