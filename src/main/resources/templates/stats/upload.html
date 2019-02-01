@@ -6,46 +6,53 @@
     <title>上传文件</title>
     <link rel="icon" type="image/x-icon" href="http://download.fengyouhui.net/fyh_wbsite/favicon.png">
     <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/reset.css?v=5">
-    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/upload.css?v=5">
+    <link rel="stylesheet" href="http://download.fengyouhui.net/casecollection/css/cvc_upload.css?v=5">
 </head>
 
 <body>
 
-<div class="header-wrap">
-    <div class="header">
-        <div class="left h1">
-            病例收集系统
-        </div>
-        <div class="right ">
-            <span id="userName"></span>
-            <span class="btn-logout" id="btnLogout">退出系统</span>
+<!--<div class="banner"></div>-->
+<div class="main-wrap">
+
+    <div class="header-wrap">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="right ">
+                <span id="userName"></span>
+                <span class="btn-logout" id="btnLogout">退出系统</span>
+            </div>
         </div>
     </div>
-</div>
 
+    <div class="main">
+        <div class="info clearfix">
+            <div class="upload">
+                <div class="h3">
+                    <img src="http://download.fengyouhui.net/casecollection/images/cvc/img_07.png" alt="图片7">
+                    <p>截止时间：2019-04-30</p>
+                </div>
+                <p>操作说明：</p>
+                <div class="list line">
+                    <ul>
+                        <li>
+                        <span class="btn-w100" id="btnDownloadTemp">
+                            <a href="/download/ACSppt病例模板.pptx" class="d-full">点击这里下载PPT模板</a>
+                        </span>
+                        </li>
+                        <li>
+                            按照PPT模板填写患者病例
+                        </li>
+                        <li>
+                            将PPT以“医院名+姓名”的格式命名
+                        </li>
+                        <li>
+                            上传病例
+                        </li>
+                    </ul>
+                </div>
 
-<div class="main">
-
-    <div class="upload">
-        <h3>CVC病例上传<span>截止时间：2019-04-30</span></h3>
-        <p>操作说明：</p>
-        <div class="list line">
-            <ul>
-                <li>
-                    <span class="btn-w100" id="btnDownloadTemp">
-                        <a href="/download/ACSppt病例模板.pptx" class="d-full">点击这里下载PPT模板</a>
-                    </span>
-                </li>
-                <li>
-                    按照PPT模板填写患者病例
-                </li>
-                <li>
-                    将PPT以“医院名+姓名”的格式命名
-                </li>
-                <li>
-                    上传病例
-                </li>
-            </ul>
+            </div>
+            <img class="text" src="http://download.fengyouhui.net/casecollection/images/cvc/text.png" alt="文字">
         </div>
         <div class="progress hidden clearfix">
             <div class="left">
@@ -61,19 +68,23 @@
                 上传完成
             </div>
         </div>
-        <div class="btn-w80 btn-upload hidden">
+        <div class="btn-w80 hidden btn-upload ">
             上传病例
             <form action="/collection/uploadppt" method="post" enctype="multipart/form-data" id="uploadForm" class="upload-form">
                 <input class="btn-upload-ppt" name="file" type="file" id="btnUploadPPT" />
             </form>
         </div>
         <div class="confirm hidden clearfix">
-            <span class="btn-w40 white" onclick="$('#detPptPop').fadeIn(100);">删除</span>
-            <span class="btn-w40">
-                <a href="" class="uploaded-ppt-url d-full">下载</a>
+            <span class="btn-w40 btn-delete white" onclick="$('#detPptPop').fadeIn(100);"></span>
+            <span class="btn-w40 btn-download">
+                <a href="" class="uploaded-ppt-url d-full"></a>
             </span>
         </div>
     </div>
+</div>
+
+<div class="footer-wrap">
+    <div class="footer">@2018&nbsp;&nbsp;万邦医药版权所有</div>
 </div>
 
 <div class="fixed-page mask pop hidden" id="detPptPop">
@@ -81,7 +92,7 @@
         确定删除病例重新上传
         <p class="clearfix btn-wrap">
             <span class="btn-w40 white pull-l" onclick="$(this).closest('.pop').fadeOut(100)">取消</span>
-            <span class="btn-w40 pull-r" id="btnDeletePPT">确认</span>
+            <span class="btn-w40 blue pull-r" id="btnDeletePPT">确认</span>
         </p>
     </div>
 </div>
