@@ -8,6 +8,13 @@ public class Person {
 	private int id;
 	private String portrait;
 	private String pptUrl;
+	private String insertTime;
+	public String getInsertTime() {
+		return insertTime;
+	}
+	public void setInsertTime(String insertTime) {
+		this.insertTime = insertTime;
+	}
 	public String getPptUrl() {
 		return pptUrl;
 	}

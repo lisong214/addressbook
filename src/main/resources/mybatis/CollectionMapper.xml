@@ -13,4 +13,19 @@
     <update id="delppt">
         update wbcms.casecollection_person set del_flag = 0, update_time = now() where id = #{id}
     </update>
+    <select id="personList" resultType="com.chinawanbang.casecollection.system.entity.Person">
+        select trueName, hospital, pptUrl, if(update_time is null, insert_time, update_time) 'insertTime' 
+            from wbcms.casecollection_person where del_flag = 1
+            <if test="map.insertTime!=null and map.insertTime!=''">
+                and if(update_time is null, insert_time, update_time) like CONCAT(#{map.insertTime},'%')
+            </if>
+            order by insertTime desc
+            limit #{map.offset}, #{map.limit}
+    </select>
+    <select id="count" resultType="int">
+        select count(1) from wbcms.casecollection_person where del_flag = 1
+            <if test="map.insertTime!=null and map.insertTime!=''">
+                and if(update_time is null, insert_time, update_time) = #{map.insertTime}
+            </if>
+    </select>
 </mapper>

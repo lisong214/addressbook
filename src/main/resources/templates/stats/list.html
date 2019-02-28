@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">搜索</button>
+						</div>
+						<div class="columns pull-right col-md-3">
+						    <div class="col-sm-13">
+								<div id="pform"	class="input-group date form_datetime col-sm-13" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+						            <input id="insertTime" name="insertTime" class="form-control" size="16" type="text" value="" placeholder="上传时间" readonly>
+						            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+								    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+							        <input type="hidden" id="dtp_input1" value="" />
+						        </div>
+					        </div>
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<!-- <script type="text/javascript" src="js/appjs/casecollection/list.js"></script> -->
+	<script type="text/javascript">
+	$(function() {
+		load();
+	});
+	function load() {
+		$('#exampleTable')
+			.bootstrapTable(
+				{
+					method : 'get', // 服务器数据的请求方式 get or post
+					url : "/collection/personList", // 服务器数据的加载地址
+					iconSize : 'outline',
+					toolbar : '#exampleToolbar',
+					striped : true, // 设置为true会有隔行变色效果
+					dataType : "json", // 服务器返回的数据类型
+					pagination : true, // 设置为true会在底部显示分页条
+					singleSelect : false, // 设置为true将禁止多选
+					pageSize : 20, // 如果设置了分页，每页数据条数
+					pageNumber : 1, // 如果设置了分布，首页页码
+					showColumns : false, // 是否显示内容下拉框（选择显示的列）
+					sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+					queryParams : function(params) {
+						return {
+							//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
+							limit : params.limit,
+							offset : params.offset,
+							insertTime : $('#insertTime').val()
+						};
+					},
+					// 返回false将会终止请求
+					columns : [
+						{
+							field : 'trueName',
+							title : '姓名',
+							align : 'center',
+							width : '25%'
+						},
+						{
+							field : 'hospital',
+							title : '医院',
+							align : 'center',
+							width : '25%'
+						},
+						{
+							field : 'insertTime',
+							title : '上传时间',
+							align : 'center',
+							width : '25%'
+						},
+						{
+							field : 'pptUrl',
+							title : '下载连接',
+							width : '25%',
+							align : 'center',
+							formatter : function(value, row, index) {
+								var v = '<a href="'+'https://fyhcollection.oss-cn-hangzhou.aliyuncs.com/ppt/'+row.pptUrl+'">下载连接</a>';
+								return v;
+							}
+						}]
+				});
+	}
+	function reLoad() {
+		var opt = {
+			query : {
+				insertTime : $('#insertTime').val()
+			}
+		}
+		$('#exampleTable').bootstrapTable('refresh', opt);
+	}
+	$("#pform").datetimepicker({
+		language : 'zh-CN',
+	    weekStart : 1,
+	    todayBtn :  1,
+		autoclose : 1,	
+		todayHighlight : 1,
+		startView : 2,
+		minView: "month"
+	});
+	</script>
+</body>
+</html>

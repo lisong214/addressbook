@@ -33,12 +33,21 @@ public class UserController {
         return mv;
     }
     /**
-     * 获取登录页面
+     * 获取上传页面
      * @return
      */
     @GetMapping("/upload")
     public ModelAndView upload() {
     	ModelAndView mv = new ModelAndView("stats/upload");
+        return mv;
+    }
+    /**
+     * 获取列表页面
+     * @return
+     */
+    @GetMapping("/list")
+    public ModelAndView list() {
+    	ModelAndView mv = new ModelAndView("stats/list");
         return mv;
     }
     /**

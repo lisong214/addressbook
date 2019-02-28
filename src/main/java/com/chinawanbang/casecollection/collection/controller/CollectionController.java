@@ -4,6 +4,7 @@ import groovy.util.logging.Slf4j;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +22,8 @@ import com.aliyun.oss.OSSClient;
 import com.chinawanbang.casecollection.collection.constant.CollectionConstant;
 import com.chinawanbang.casecollection.collection.service.CollectionService;
 import com.chinawanbang.casecollection.common.util.LoginValidUtil;
+import com.chinawanbang.casecollection.common.util.PageUtils;
+import com.chinawanbang.casecollection.common.util.Query;
 import com.chinawanbang.casecollection.common.util.RedisUtil;
 import com.chinawanbang.casecollection.common.vo.ResultVO;
 import com.chinawanbang.casecollection.system.entity.Person;
@@ -120,5 +124,21 @@ public class CollectionController {
     @ResponseBody
     public ResultVO personDetail(HttpSession session) {
         return collectionService.personDetail(session);
+    }
+    
+    /**
+     * 获取人员列表
+     * @param session
+     * @return
+     */
+    @RequestMapping("/personList")
+    @ResponseBody
+    public PageUtils personList(@RequestParam Map<String, Object> params) {
+    	// 查询列表数据
+        Query query = new Query(params);
+        List<Person> personList = collectionService.personList(query);
+        int total = collectionService.count(query);
+        PageUtils pageUtils = new PageUtils(personList, total);
+        return pageUtils;
     }
 }

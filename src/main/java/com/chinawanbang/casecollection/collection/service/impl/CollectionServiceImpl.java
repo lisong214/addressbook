@@ -1,5 +1,6 @@
 package com.chinawanbang.casecollection.collection.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -88,6 +89,16 @@ public class CollectionServiceImpl implements CollectionService {
 	@Override
 	public int addPerson(Person person) {
 		return collectionDao.addPerson(person);
+	}
+
+	@Override
+	public List<Person> personList(Map<String, Object> map) {
+		return collectionDao.personList(map);
+	}
+
+	@Override
+	public int count(Map<String, Object> map) {
+		return collectionDao.count(map);
 	}
 
 }
