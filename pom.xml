@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chinawanbang</groupId>
-    <artifactId>casecollection</artifactId>
+    <groupId>com.xzdtyy</groupId>
+    <artifactId>addressbook</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <!-- <packaging>war</packaging> -->
 
-    <name>casecollection</name>
-    <description>病例收集后台接口程序</description>
+    <name>addressbook</name>
+    <description>徐州地铁运营通讯录</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,7 +29,7 @@
         <lombok.version>1.16.20</lombok.version>
         <mybatis.version>1.3.2</mybatis.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <mysql.jdbc.version>5.1.40</mysql.jdbc.version>
+        <mysql.jdbc.version>8.0.11</mysql.jdbc.version>
         <fastjson.version>1.2.49</fastjson.version>
     </properties>
 
@@ -170,7 +170,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<warName>ROOT</warName>
+					<warName>addressbook</warName>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -180,8 +180,8 @@
     <repositories>
         <repository>
             <id>public</id>
-            <name>wanbangyjk_nexus</name>
-            <url>http://yjkgit.wanbang.net:8081/nexus/content/groups/public/</url>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -190,8 +190,8 @@
     <pluginRepositories>
         <pluginRepository>
             <id>public</id>
-            <name>wanbangyjk_nexus</name>
-            <url>http://yjkgit.wanbang.net:8081/nexus/content/groups/public/</url>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
