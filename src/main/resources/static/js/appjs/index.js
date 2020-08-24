@@ -17,7 +17,7 @@ function load() {
 				dataType : "json", // 服务器返回的数据类型
 				pagination : true, // 设置为true会在底部显示分页条
 				singleSelect : false, // 设置为true将禁止多选
-				pageSize : 50, // 如果设置了分页，每页数据条数
+				pageSize : 15, // 如果设置了分页，每页数据条数
 				pageNumber : 1, // 如果设置了分布，首页页码
 				pageList: [],        //可供选择的每页的行数（*）
 				showColumns : false, // 是否显示内容下拉框（选择显示的列）
