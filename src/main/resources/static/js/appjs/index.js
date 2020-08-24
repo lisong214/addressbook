@@ -107,10 +107,20 @@ function load() {
 			});
 }
 function reLoad() {
+	var o = $('#option').val();
+	if (o == 0) {
+		layer.msg('请选择搜索项');
+		return;
+	}
+	var n = $('#name').val();
+	if (n == '' || n == null) {
+		layer.msg('请输入搜索内容');
+		return;
+	}
 	var opt = {
 		query : {
-			option : $('#option').val(),
-			name : $('#name').val(),
+			option : o,
+			name : n,
 			offic : $('#offic').val()
 		}
 	}
@@ -118,8 +128,6 @@ function reLoad() {
 }
 
 function cilckoffic(val) {
-	/*var a = $(this);
-	$(this).removeClass("open");*/
 	if('sy' == val) {
 		document.getElementById("text").innerHTML = "徐州地铁运营公司通讯录";
 		document.getElementById("printTital").innerHTML = "徐州地铁运营公司通讯录";
