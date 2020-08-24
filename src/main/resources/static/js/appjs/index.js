@@ -107,20 +107,10 @@ function load() {
 			});
 }
 function reLoad() {
-	var o = $('#option').val();
-	if (o == 0) {
-		layer.msg('请选择搜索项');
-		return;
-	}
-	var n = $('#name').val();
-	if (n == '' || n == null) {
-		layer.msg('请输入搜索内容');
-		return;
-	}
 	var opt = {
 		query : {
-			option : o,
-			name : n,
+			option : $('#option').val(),
+			name : $('#name').val(),
 			offic : $('#offic').val()
 		}
 	}
