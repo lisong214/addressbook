@@ -63,6 +63,12 @@ function load() {
 						width : '10%'
 					},
 					{
+						field : 'number',
+						title : '工号',
+						align : 'center',
+						width : '10%'
+					},
+					{
 						field : 'job',
 						title : '职务',
 						align : 'center',

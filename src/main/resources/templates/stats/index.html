@@ -54,6 +54,7 @@
                                 	class="form-control chosen-select" tabindex="1">
                                     <option value="0">搜索项</option>
                                     <option value="1">姓名</option>
+                                    <option value="9">工号</option>
                                     <option value="2">职务</option>
                                     <option value="3">办公室</option>
                                     <option value="4">联系电话</option>
@@ -195,12 +196,12 @@
 			},
 			success : function(data) {
 				if ($('#offic').val() == 'cz') {
-					headhtml = '<tr><th width="5%">序号</th><th width="14%">车站</th><th width="8%">车控室</th><th width="10%">姓名</th><th width="12%">职务</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="12%">QQ</th></tr>'
+					headhtml = '<tr><th width="5%">序号</th><th width="14%">车站</th><th width="8%">车控室</th><th width="10%">姓名</th><th width="13%">工号</th><th width="12%">职务</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="12%">QQ</th></tr>'
 					for (var i = 0; i < data.length; i++) {
-						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].cheZhan+'</td><td>'+data[i].cheKongShi+'</td><td>'+data[i].name+'</td><td>'+data[i].office+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
+						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].cheZhan+'</td><td>'+data[i].cheKongShi+'</td><td>'+data[i].name+'</td><td>'+data[i].number+'</td><td>'+data[i].job+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
 					}
 				} else {
-					headhtml = '<tr><th width="6%">序号</th><th width="8%">姓名</th><th width="18%">职务</th><th width="19%">办公室</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="10%">QQ</th></tr>'
+					headhtml = '<tr><th width="6%">序号</th><th width="8%">姓名</th><th width="15%">职务</th><th width="19%">办公室</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="13%">QQ</th></tr>'
 					for (var i = 0; i < data.length; i++) {
 						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].name+'</td><td>'+data[i].job+'</td><td>'+data[i].office+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
 					}

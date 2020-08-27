@@ -5,7 +5,7 @@
     <!-- 首页 -->
     <select id="getAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -30,6 +30,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -61,12 +64,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 办公室 -->
     <select id="getBgsAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_bgs
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_bgs
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -91,6 +97,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -122,12 +131,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 人力资源 -->
     <select id="getRlzyAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_rlzyb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_rlzyb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -152,6 +164,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -183,12 +198,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 党群工作部 -->
     <select id="getDqgzAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_dqjcb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_dqjcb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -213,6 +231,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -244,12 +265,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 安全技术部 -->
     <select id="getAqjsAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_aqjsb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_aqjsb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -274,6 +298,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -305,12 +332,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 企划部 -->
     <select id="getQhAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_qhb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_qhb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -335,6 +365,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -366,12 +399,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 物资部 -->
     <select id="getWzAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_wzb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_wzb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -396,6 +432,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -427,12 +466,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 调度票务部 -->
     <select id="getDdpwAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_ddpwb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_ddpwb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -457,6 +499,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -488,12 +533,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 调度票务部总调室 -->
     <select id="getZdAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_ddpwbzds
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_ddpwbzds
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -518,6 +566,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -549,12 +600,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 调度票务部票务室 -->
     <select id="getPwAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_ddpwbpws
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_ddpwbpws
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -579,6 +633,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -610,12 +667,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 客运部 -->
     <select id="getKyAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_kyb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_kyb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -640,6 +700,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -671,12 +734,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 客运部站务室 -->
     <select id="getZwAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_kybzws
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_kybzws
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -701,6 +767,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -732,12 +801,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 客运部乘务室 -->
     <select id="getCwAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_kybcws
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_kybcws
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -762,6 +834,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -793,12 +868,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 客运部车站 -->
     <select id="getCzAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,Chezhan 'cheZhan',Chekongshi 'cheKongShi',`Name` name,`Job` job,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_chezhan
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_chezhan
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -823,6 +901,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -854,12 +935,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 车辆部 -->
     <select id="getClAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_clb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_clb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -884,6 +968,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -915,12 +1002,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 车辆部检修室 -->
     <select id="getJxAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_clbjxs
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_clbjxs
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -945,6 +1035,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -976,12 +1069,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 车辆部设备室 -->
     <select id="getSbAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_clbsbs
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_clbsbs
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1006,6 +1102,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1037,12 +1136,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部 -->
     <select id="getJdssAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssb
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssb
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1067,6 +1169,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1098,12 +1203,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部供电室 -->
     <select id="getGdsAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssbgds
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbgds
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1128,6 +1236,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1159,12 +1270,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部工建室 -->
     <select id="getGjsAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssbgjs
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbgjs
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1189,6 +1303,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1220,12 +1337,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部机电室 -->
     <select id="getJdsAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssbjds
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbjds
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1250,6 +1370,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1281,12 +1404,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部自动化室 -->
     <select id="getZdhAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssbzdhs
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbzdhs
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1311,6 +1437,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1342,12 +1471,15 @@
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
            </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
         </where>
     </select>
     <!-- 机电设施部通号室 -->
     <select id="getThAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
-  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq from addressbook.addrlist_jdssbths
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbths
   		<where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1372,6 +1504,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
   		limit #{map.offset}, #{map.limit}
@@ -1402,6 +1537,9 @@
            </if>
            <if test="map.option == 8">
                QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
            </if>
         </where>
     </select>

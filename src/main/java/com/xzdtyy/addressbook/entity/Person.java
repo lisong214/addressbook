@@ -15,5 +15,6 @@ public class Person {
 	private String landline;
 	private String shortLandline;
 	private String qq;
+	private String number;
 
 }
