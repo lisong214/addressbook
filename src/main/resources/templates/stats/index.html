@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>徐州地铁运营公司通讯录</title>
     <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">  -->
-	<link rel="stylesheet" href="/addressbook/css/plugins/bootstrap/4.3.1/bootstrap.min.css">
-	<link rel="stylesheet" href="/addressbook/css/plugins/bootstrap-table/bootstrap-table.min.css">
-	<link rel="stylesheet" href="/addressbook/css/plugins/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/plugins/bootstrap/4.3.1/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/plugins/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="/css/plugins/bootstrap/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 	<!-- 引入bootstrap样式 -->
 	<!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery-dropdown/2.0.3/jquery.dropdown.js"></script> -->
-	<!-- <link href="/addressbook/css/plugins/style.css" type="text/css" rel="stylesheet"/> -->
+	<link href="/css/plugins/style.css" type="text/css" rel="stylesheet"/>
 	<!-- <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script> -->
 	<!-- <script src="/addressbook/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script> -->
 	<!-- <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script> -->
-	<script src="/addressbook/js/plugins/jquery-3.5.1.min.js"></script>
-	<script src="/addressbook/js/plugins/bootstrap.min.js"></script> 
+	<script src="/js/plugins/jquery-3.5.1.min.js"></script>
+	<script src="/js/plugins/bootstrap.min.js"></script> 
 	<!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->  
-    <script src="/addressbook/js/plugins/print.js"></script>
-	<script src="/addressbook/js/plugins/layer/layer.js"></script>
-    <script src="/addressbook/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="/addressbook/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/js/plugins/print.js"></script>
+	<script src="/js/plugins/layer/layer.js"></script>
+    <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
     <script>
 	     $(function () {
 	         $(".dropdown").mouseover(function () {
@@ -30,19 +30,18 @@
 	         $(".dropdown").mouseleave(function(){
 	            $(this).removeClass("open");
 	         });
-	         // $(".dropdown").dropdown("toggle");
-	         $(".dropdown-toggle").one("click",function(){
+			 $(".dropdown-toggle").one("click",function(){
 		        $(this).dropdown("toggle");
 		     });
 	     })
 	</script>
     <style>
      #all {margin: 15px auto; padding:0;}
-     #dh {font-size:160%;}
+     #dh {font-size:160%}
     </style>
 </head>		
 <body style='overflow:auto;'>
-<div id='all' style="width:1450px;min-height: 700px;">
+<div id='all' style="width:1450px;min-height: 800px;">
     <div>
 		<h1 id='text' class="text-center">徐州地铁运营公司通讯录</h1>
     </div>
@@ -55,10 +54,10 @@
                         <div class="form-group" style="margin-left:66%;position:relative; top:-10px;">
                             <div>
                                 <select id="option" name="option" data-placeholder="搜索项" 
-                                	class="form-control chosen-select" tabindex="1">
+                                	class="form-control" tabindex="1">
                                     <option value="0">搜索项</option>
                                     <option value="1">姓名</option>
-                                    <option value="9">工号</option>
+									<option value="9">工号</option>
                                     <option value="2">职务</option>
                                     <option value="3">办公室</option>
                                     <option value="4">联系电话</option>
@@ -83,29 +82,29 @@
 					  <img src="/images/logo.png">
 					  <ul class="navbar-nav">
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('sy')">首页</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('sy')">首页</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('bgs')">办公室</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('bgs')">办公室</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('rlzy')">人力资源</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('rlzy')">人力资源</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('dqgz')">党群工作部</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('dqgz')">党群工作部</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('aqjs')">安全技术部</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('aqjs')">安全技术部</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('qh')">企划部</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('qh')">企划部</a>
 					    </li>
 					    <li class="nav-item">
-					      <a style="color:#000000;" class="nav-link" href="javascript:cilckoffic('wz')">物资部</a>
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('wz')">物资部</a>
 					    </li>
 					    <li class="nav-item dropdown">
-					      <a style="color:#000000;" class="nav-link dropdown-toggle" href=""
-					        onclick="cilckoffic('ddpw')" id="navbardrop" data-toggle="dropdown">
+					      <a style="color:#000000;font-weight: bold" class="nav-link dropdown-toggle" href=""
+					        onclick="cilckoffic('ddpw')" id="navbardrop" data-toggle="dropdown"><!--  data-toggle="dropdown" -->
 					      	调度票务部
 					      </a>
 					      <div class="dropdown-menu">
@@ -114,19 +113,20 @@
 					      </div>
 					    </li>
 					    <li class="nav-item dropdown">
-					      <a style="color:#000000;" class="nav-link dropdown-toggle" href="" 
-					        onclick="cilckoffic('ky')" id="navbardrop" data-toggle="dropdown">
+					      <a style="color:#000000;font-weight: bold" class="nav-link dropdown-toggle" href="" 
+					        onclick="cilckoffic('ky')" id="navbardrop2" data-toggle="dropdown">
 					      	客运部
 					      </a>
 					      <div class="dropdown-menu">
 					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('zw')">站务室</a>
 					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('cw')">乘务室</a>
-					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('cz')">车站</a>
+					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('yicz')">一号线车站</a>
+					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('ercz')">二号线车站</a>
 					      </div>
 					    </li>
 					    <li class="nav-item dropdown">
-					      <a style="color:#000000;" class="nav-link dropdown-toggle" href="" 
-					        onclick="cilckoffic('cl')" id="navbardrop" data-toggle="dropdown">
+					      <a style="color:#000000;font-weight: bold" class="nav-link dropdown-toggle" href="" 
+					        onclick="cilckoffic('cl')" id="navbardrop3" data-toggle="dropdown">
 					      	车辆部
 					      </a>
 					      <div class="dropdown-menu">
@@ -135,8 +135,8 @@
 					      </div>
 					    </li>
 					    <li class="nav-item dropdown">
-					      <a style="color:#000000;" class="nav-link dropdown-toggle" href="" 
-					        onclick="cilckoffic('jdss')" id="navbardrop" data-toggle="dropdown">
+					      <a style="color:#000000;font-weight: bold" class="nav-link dropdown-toggle" href="" 
+					        onclick="cilckoffic('jdss')" id="navbardrop4" data-toggle="dropdown">
 					      	机电设施部
 					      </a>
 					      <div class="dropdown-menu">
@@ -147,6 +147,9 @@
 					        <a style="font-size:20px" class="dropdown-item" href="javascript:cilckoffic('th')">通号室</a>
 					      </div>
 					    </li>
+					    <!-- <li class="nav-item">
+					      <a style="color:#000000;font-weight: bold" class="nav-link" href="javascript:cilckoffic('zbdh')">值班电话</a>
+					    </li> -->
 					  </ul>
 					</nav>
 					<font size="3" color="#FF0000" class="pull-right" style="margin-top:-10px">最后更新时间：2020-08-01</font>
@@ -159,12 +162,12 @@
 </div>
 	<script type="text/javascript" src="/js/appjs/index.js"></script>
 <!-- 打印 页面  隐藏 -->
-<!-- <script src="/js/plugins/key13.js" language="javascript" type="text/javascript"></script>
-<script src="/js/plugins/serch.js" language="javascript" type="text/javascript"></script> -->
+<!-- <script src="/addressbook/js/plugins/key13.js" language="javascript" type="text/javascript"></script> -->
+<!-- <script src="/addressbook/js/plugins/serch.js" language="javascript" type="text/javascript"></script> -->
 <div style="display:none;">
 <!--startprint-->
 <div id="a" style="margin: 100px auto;">
-<div class="logo"><img src="/images/logo.png"></a></div>
+<div class="logo"><img src="/images/logo.png"></div>
       <div class="addresshead">
 	<h1 id="printTital" style="color:#000">徐州地铁运营公司通讯录</h1>
 	<span style="color:red;">更新时间:2020年8月1日</span>
@@ -188,7 +191,8 @@
 		var headhtml = "";
 		$.ajax({
 			type : "get",
-			url : "/addressbook/getprintAddressbook",
+			//url : "http://10.16.232.48/addressbook/addressbook/getprintAddressbook",
+			url : "http://localhost:8080/addressbook/getprintAddressbook",
 			data : {
 				option : $('#option').val(),
 				name : $('#name').val(),
@@ -199,15 +203,15 @@
 				alert("网络超时");
 			},
 			success : function(data) {
-				if ($('#offic').val() == 'cz') {
+				if ($('#offic').val() == 'yicz' || $('#offic').val() == 'ercz') {
 					headhtml = '<tr><th width="5%">序号</th><th width="14%">车站</th><th width="8%">车控室</th><th width="10%">姓名</th><th width="13%">工号</th><th width="12%">职务</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="12%">QQ</th></tr>'
 					for (var i = 0; i < data.length; i++) {
 						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].cheZhan+'</td><td>'+data[i].cheKongShi+'</td><td>'+data[i].name+'</td><td>'+data[i].number+'</td><td>'+data[i].job+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
 					}
 				} else {
-					headhtml = '<tr><th width="6%">序号</th><th width="8%">姓名</th><th width="15%">职务</th><th width="19%">办公室</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="13%">QQ</th></tr>'
+					headhtml = '<tr><th width="6%">序号</th><th width="8%">姓名</th><th width="13%">工号</th><th width="15%">职务</th><th width="19%">办公室</th><th width="13%">联系电话</th><th width="8%">集团短号</th><th width="10%">办公电话</th><th width="8%">内线号码</th><th width="13%">QQ</th></tr>'
 					for (var i = 0; i < data.length; i++) {
-						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].name+'</td><td>'+data[i].job+'</td><td>'+data[i].office+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
+						bodyhtml += '<tr><td>'+data[i].id+'</td><td>'+data[i].name+'</td><td>'+data[i].number+'</td><td>'+data[i].job+'</td><td>'+data[i].office+'</td><td>'+data[i].mobile+'</td><td>'+data[i].shortMobile+'</td><td>'+data[i].landline+'</td><td>'+data[i].shortLandline+'</td><td>'+data[i].qq+'</td></tr>';
 					}
 				}
 				$("#bookdatatthead").append(headhtml);
@@ -216,20 +220,20 @@
 		})     
 		preview();
 		window.location.reload();
-	};
+	}
 	
 	$('#name').bind('keypress', function (event) {
 	    if (event.keyCode == "13") {
-	    	var o = $('#option').val();
-			if (o == 0) {
-				layer.msg('请选择搜索项');
-				return;
-			}
-			var n = $('#name').val();
-			if (n == '' || n == null) {
-				layer.msg('请输入搜索内容');
-				return;
-			}
+		var o = $('#option').val();
+		if (o == 0) {
+			layer.msg('请选择搜索项');
+			return;
+		}
+		var n = $('#name').val();
+		if (n == '' || n == null) {
+			layer.msg('请输入搜索内容');
+			return;
+		}
 	        reLoad();
 	    }
 	});

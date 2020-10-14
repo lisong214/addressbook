@@ -873,7 +873,7 @@
            </if>
         </where>
     </select>
-    <!-- 客运部车站 -->
+    <!-- 客运部一号线车站 -->
     <select id="getCzAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
        select id,Chezhan 'cheZhan',Chekongshi 'cheKongShi',`Name` name,`Job` job,`Mobile` mobile,`ShortMobile` shortMobile,
   		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_chezhan
@@ -910,6 +910,73 @@
     </select>
     <select id="getCzAddressBookCount" resultType="int">
        select count(*) from addressbook.addrlist_chezhan
+       <where>
+           <if test="map.option == 1">
+               Name like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 2">
+               Job like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 3">
+               Office like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 4">
+               Mobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 5">
+               ShortMobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 6">
+               Landline like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 7">
+               ShortLandline concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 8">
+               QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
+        </where>
+    </select>
+    <!-- 客运部二号线车站 -->
+    <select id="getErczAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
+       select id,Chezhan 'cheZhan',Chekongshi 'cheKongShi',`Name` name,`Job` job,`Mobile` mobile,`ShortMobile` shortMobile,
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_chezhanerline
+  		<where>
+           <if test="map.option == 1">
+               Name like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 2">
+               Job like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 3">
+               Office like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 4">
+               Mobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 5">
+               ShortMobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 6">
+               Landline like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 7">
+               ShortLandline concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 8">
+               QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
+        </where>
+  		limit #{map.offset}, #{map.limit}
+    </select>
+    <select id="getErczAddressBookCount" resultType="int">
+       select count(*) from addressbook.addrlist_chezhanerline
        <where>
            <if test="map.option == 1">
                Name like concat('%',#{map.name},'%')
@@ -1512,6 +1579,73 @@
   		limit #{map.offset}, #{map.limit}
     </select>
     <select id="getThAddressBookCount" resultType="int">
+       select count(*) from addressbook.addrlist_jdssbths
+       <where>
+           <if test="map.option == 1">
+               Name like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 2">
+               Job like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 3">
+               Office like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 4">
+               Mobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 5">
+               ShortMobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 6">
+               Landline like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 7">
+               ShortLandline concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 8">
+               QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
+        </where>
+    </select>
+    <!-- 值班电话 -->
+    <select id="getZbdhAddressBook" resultType="com.xzdtyy.addressbook.entity.Person">
+       select id,`Name` name,`Job` job,`Office` office,`Mobile` mobile,`ShortMobile` shortMobile,
+  		`Landline` landline,`ShortLandline` shortLandline,`QQ` qq,number from addressbook.addrlist_jdssbths
+  		<where>
+           <if test="map.option == 1">
+               Name like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 2">
+               Job like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 3">
+               Office like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 4">
+               Mobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 5">
+               ShortMobile like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 6">
+               Landline like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 7">
+               ShortLandline concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 8">
+               QQ like concat('%',#{map.name},'%')
+           </if>
+           <if test="map.option == 9">
+               number like concat('%',#{map.name},'%')
+           </if>
+        </where>
+  		limit #{map.offset}, #{map.limit}
+    </select>
+    <select id="getZbdhAddressBookCount" resultType="int">
        select count(*) from addressbook.addrlist_jdssbths
        <where>
            <if test="map.option == 1">

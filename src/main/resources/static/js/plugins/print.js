@@ -12,7 +12,7 @@ prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
 
 window.document.body.innerHTML=prnhtml; 
 
-document.getElementById('a').style.zoom=0.9;
+//document.getElementById('a').style.zoom=0.9;
 
 window.print(); 
 

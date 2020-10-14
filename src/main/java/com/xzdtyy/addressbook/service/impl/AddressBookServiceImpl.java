@@ -51,8 +51,10 @@ public class AddressBookServiceImpl implements AddressBookService {
 			list = addressBookDao.getZwAddressBook(map);
 		} else if ("cw".equals(offic)) {              // 客运部乘务室
 			list = addressBookDao.getCwAddressBook(map);
-		} else if ("cz".equals(offic)) {              // 客运部车站
+		} else if ("yicz".equals(offic)) {              // 客运部一号线车站
 			list = addressBookDao.getCzAddressBook(map);
+		} else if ("ercz".equals(offic)) {              // 客运部二号线车站
+			list = addressBookDao.getErczAddressBook(map);
 		} else if ("cl".equals(offic)) {              // 车辆部
 			list = addressBookDao.getClAddressBook(map);
 		} else if ("jx".equals(offic)) {              // 车辆部检修室
@@ -71,6 +73,8 @@ public class AddressBookServiceImpl implements AddressBookService {
 			list = addressBookDao.getZdhAddressBook(map);
 		} else if ("th".equals(offic)) {              // 机电设施部通号室
 			list = addressBookDao.getThAddressBook(map);
+		} else if ("zbdh".equals(offic)) {            // 值班电话
+			list = addressBookDao.getZbdhAddressBook(map);
 		}
 		return list;
 	}
@@ -105,8 +109,10 @@ public class AddressBookServiceImpl implements AddressBookService {
 			count = addressBookDao.getZwAddressBookCount(map);
 		} else if ("cw".equals(offic)) {              // 客运部乘务室
 			count = addressBookDao.getCwAddressBookCount(map);
-		} else if ("cz".equals(offic)) {              // 客运部车站
+		} else if ("yicz".equals(offic)) {              // 客运部一号线车站
 			count = addressBookDao.getCzAddressBookCount(map);
+		} else if ("ercz".equals(offic)) {              // 客运部二号线车站
+			count = addressBookDao.getErczAddressBookCount(map);
 		} else if ("cl".equals(offic)) {              // 车辆部
 			count = addressBookDao.getClAddressBookCount(map);
 		} else if ("jx".equals(offic)) {              // 车辆部检修室
@@ -125,6 +131,8 @@ public class AddressBookServiceImpl implements AddressBookService {
 			count = addressBookDao.getZdhAddressBookCount(map);
 		} else if ("th".equals(offic)) {              // 机电设施部通号室
 			count = addressBookDao.getThAddressBookCount(map);
+		} else if ("zbdh".equals(offic)) {            // 值班电话
+			count = addressBookDao.getZbdhAddressBookCount(map);
 		}
 		return count;
 	}
@@ -163,8 +171,10 @@ public class AddressBookServiceImpl implements AddressBookService {
 			list = addressBookDao.getZwAddressBook(map);
 		} else if ("cw".equals(offic)) {              // 客运部乘务室
 			list = addressBookDao.getCwAddressBook(map);
-		} else if ("cz".equals(offic)) {              // 客运部车站
+		} else if ("yicz".equals(offic)) {              // 客运部一号线车站
 			list = addressBookDao.getCzAddressBook(map);
+		} else if ("ercz".equals(offic)) {              // 客运部二号线车站
+			list = addressBookDao.getErczAddressBook(map);
 		} else if ("cl".equals(offic)) {              // 车辆部
 			list = addressBookDao.getClAddressBook(map);
 		} else if ("jx".equals(offic)) {              // 车辆部检修室
@@ -183,6 +193,8 @@ public class AddressBookServiceImpl implements AddressBookService {
 			list = addressBookDao.getZdhAddressBook(map);
 		} else if ("th".equals(offic)) {              // 机电设施部通号室
 			list = addressBookDao.getThAddressBook(map);
+		} else if ("zbdh".equals(offic)) {            // 值班电话
+			list = addressBookDao.getZbdhAddressBook(map);
 		}
 		return list;
 	}

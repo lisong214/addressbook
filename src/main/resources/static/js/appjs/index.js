@@ -10,7 +10,8 @@ function load() {
 		.bootstrapTable(
 			{
 				method : 'get', // 服务器数据的请求方式 get or post
-				url : prefix + "/getaddressbook", // 服务器数据的加载地址
+				//url : "http://10.16.232.48/addressbook/addressbook/getaddressbook", // 服务器数据的加载地址
+				url : "http://localhost:8080/addressbook/getaddressbook", 
 				iconSize : 'outline',
 				toolbar : '#exampleToolbar',
 				striped : false, // 设置为true会有隔行变色效果
@@ -39,7 +40,7 @@ function load() {
 		                title: '序号',
 		                sortable: true,
 		                align: "center",
-		                width: '5%',
+		                width: '3%',
 		                formatter: function (value, row, index) {
 		                    return index+1;
 		                }
@@ -60,25 +61,25 @@ function load() {
 						field : 'name',
 						title : '姓名',
 						align : 'center',
-						width : '10%'
+						width : '8%'
 					},
 					{
 						field : 'number',
 						title : '工号',
 						align : 'center',
-						width : '10%'
+						width : '8%'
 					},
 					{
 						field : 'job',
 						title : '职务',
 						align : 'center',
-						width : '15%'
+						width : '20%'
 					},
 					{
 						field : 'office',
 						title : '办公室',
 						align : 'center',
-						width : '17%'
+						width : '15%'
 					},
 					{
 						field : 'mobile',
@@ -96,7 +97,7 @@ function load() {
 						field : 'landline',
 						title : '办公电话',
 						align : 'center',
-						width : '15%' 
+						width : '13%' 
 					},
 					{
 						field : 'shortLandline',
@@ -108,7 +109,7 @@ function load() {
 						field : 'qq',
 						title : 'QQ',
 						align : 'center',
-						width : '10%'
+						width : '14%'
 					}]
 			});
 }
@@ -124,6 +125,8 @@ function reLoad() {
 }
 
 function cilckoffic(val) {
+	/*var a = $(this);
+	$(this).removeClass("open");*/
 	if('sy' == val) {
 		document.getElementById("text").innerHTML = "徐州地铁运营公司通讯录";
 		document.getElementById("printTital").innerHTML = "徐州地铁运营公司通讯录";
@@ -228,10 +231,18 @@ function cilckoffic(val) {
 		$('#exampleTable').bootstrapTable('hideColumn', 'cheZhan');
 		$('#exampleTable').bootstrapTable('hideColumn', 'cheKongShi');
 		$('#exampleTable').bootstrapTable('showColumn', 'office');
-	} else if ('cz' == val) {
-		document.getElementById("text").innerHTML = "客运部--车站通讯录";
-		document.getElementById("printTital").innerHTML = "客运部--车站通讯录";
-		$("#offic").val("cz");
+	} else if ('yicz' == val) {
+		document.getElementById("text").innerHTML = "客运部--一号线车站通讯录";
+		document.getElementById("printTital").innerHTML = "客运部--一号线车站通讯录";
+		$("#offic").val("yicz");
+		reLoad();
+		$('#exampleTable').bootstrapTable('showColumn', 'cheZhan');
+		$('#exampleTable').bootstrapTable('showColumn', 'cheKongShi');
+		$('#exampleTable').bootstrapTable('hideColumn', 'office');
+	} else if ('ercz' == val) {
+		document.getElementById("text").innerHTML = "客运部--二号线车站通讯录";
+		document.getElementById("printTital").innerHTML = "客运部--二号线车站通讯录";
+		$("#offic").val("ercz");
 		reLoad();
 		$('#exampleTable').bootstrapTable('showColumn', 'cheZhan');
 		$('#exampleTable').bootstrapTable('showColumn', 'cheKongShi');
@@ -308,5 +319,13 @@ function cilckoffic(val) {
 		$('#exampleTable').bootstrapTable('hideColumn', 'cheZhan');
 		$('#exampleTable').bootstrapTable('hideColumn', 'cheKongShi');
 		$('#exampleTable').bootstrapTable('showColumn', 'office');
-	} 
+	} else if ('zbdh' == val) {
+		document.getElementById("text").innerHTML = "值班电话通讯录";
+		document.getElementById("printTital").innerHTML = "值班电话通讯录";
+		$("#offic").val("zbdh");
+		reLoad();
+		$('#exampleTable').bootstrapTable('hideColumn', 'cheZhan');
+		$('#exampleTable').bootstrapTable('hideColumn', 'cheKongShi');
+		$('#exampleTable').bootstrapTable('showColumn', 'office');
+	}
 }

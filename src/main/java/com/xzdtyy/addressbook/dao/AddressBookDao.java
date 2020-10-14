@@ -47,9 +47,12 @@ public interface AddressBookDao {
 	// 客运部乘务室
 	List<Person> getCwAddressBook(@Param("map") Map<String, Object> map);
 	int getCwAddressBookCount(@Param("map") Map<String, Object> map);
-	// 客运部车站
+	// 客运部一号线车站
 	List<Person> getCzAddressBook(@Param("map") Map<String, Object> map);
 	int getCzAddressBookCount(@Param("map") Map<String, Object> map);
+	// 客运部二号线车站
+	List<Person> getErczAddressBook(@Param("map") Map<String, Object> map);
+	int getErczAddressBookCount(@Param("map") Map<String, Object> map);
 	// 车辆部
 	List<Person> getClAddressBook(@Param("map") Map<String, Object> map);
 	int getClAddressBookCount(@Param("map") Map<String, Object> map);
@@ -77,5 +80,8 @@ public interface AddressBookDao {
 	// 机电设施部通号室
 	List<Person> getThAddressBook(@Param("map") Map<String, Object> map);
 	int getThAddressBookCount(@Param("map") Map<String, Object> map);
+	// 值班电话
+	List<Person> getZbdhAddressBook(@Param("map") Map<String, Object> map);
+	int getZbdhAddressBookCount(@Param("map") Map<String, Object> map);
 	
 }
